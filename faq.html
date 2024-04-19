@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Boxes</title>
+  <link rel="stylesheet"  href="style.css">
+  <style>
+    .image-box-container {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .image-box:hover {
+    transform: scale(1.2);
+    }
+
+    .image-box {
+      width: 300px;
+      height: 350px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 20px;
+      cursor: pointer;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 40%;
+      object-fit: cover;
+    }
+
+    #details-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 50;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      height: 400px;
+      width: 500px;
+    }
+
+    .close-btn {
+      cursor: pointer;
+      color: #333;
+      font-size: 20px;
+      float: right;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #232323;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav {
+      background-color:gold;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #050505;
+      text-decoration: none;
+      padding: 10px;
+      margin: 0 10px;
+      border-radius: 5px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color:gold;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 5px;
+      text-align: left; /* Align dropdown items to the left */
+    }
+
+    .dropdown-content a {
+      color: #000000;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    button{
+ margin-left: 30%;
+ border-color: rgb(100, 100, 255);
+ color: #fff;
+ background-color: rgb(81, 81, 185);
+ border-radius: 20px;
+ font-size: 17px;
+ height: 40px;
+    }
+  </style>
+</head>
+<body>
+
+    <header>
+        <img src="image/header2.jpg" width="700px" height="130px">
+      </header>
+    
+      <nav>
+        <div class="dropdown">
+          <a href="#">Search</a>
+          <div class="dropdown-content">
+            <a href="#">Available train</a>
+            <a href="e1.html">Search train</a>
+            <a href="popular.html">Popular destination</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Ticket</a>
+          <div class="dropdown-content">
+            <a href="#">Cancel Ticket</a>
+            <a href="#">Book Ticket</a>
+            <a href="#">Ticket details</a>
+          </div>
+          </div>
+          <div class="dropdown">
+            <a href="#">Service</a>
+            <div class="dropdown-content">
+              <a href="#">E-Catering</a>
+              <a href="#">Hotels</a>
+              <a href="#">Cab</a>
+            </div>
+            </div>
+            <div class="dropdown">
+              <a href="#">Profile</a>
+              <div class="dropdown-content">
+                <a href="#">View</a>
+                <a href="#">Update</a>
+                <a href="#">Profile Avatar</a>
+                <a href="#">Change Password</a>
+              </div>
+              </div>
+              <div class="dropdown">
+                <a href="#">Contact</a>
+                <div class="dropdown-content">
+                  <a href="about.html">About us</a>
+                  <a href="#">Help</a>
+                  <a href="faq.html">FAQs</a>
+                </div>
+                </div>
+            <a href="main.html">Logout</a>
+      </nav>
+<div>
+    <h1>RailYatri Is The One-Stop Solution For All Your Indian Railway Ticket Booking And Train Information Needs</h1>
+  <p>FAQs<br>
+    <h4>Q) How can I book train tickets online with RailYatri?<br>
+    A) You can easily book your train tickets with RailYatri by visiting our website/app and selecting your boarding and arrival destinations. Choose a train that best suits your needs, fill in your details, proceed to our easy payment gateway, enter your original IRCTC password, and get your PNR. Your train ticket booking confirmation will be sent via Email, SMS, or WhatsApp.
+    <br></h4>
+   <h4> Q) How many passengers can I book on a single train ticket booking?<br>
+    A) You can book up to 6 passengers on a single train booking. For Tatkal train ticket booking, the maximum number is 4 persons per booking. Two children below 5 years are allowed per booking but not ticketed.
+    <br></h4>
+    <h4>Q) What are the cancellation charges for train tickets?<br>
+    A) If you cancel a confirmed train ticket more than 48 hours prior to the scheduled departure of the train, the cancellation charges will be Rs.240/- for AC First Class/Executive Class, Rs.200/- for AC 2 Tier/First Class, Rs. 180 for AC 3 Tier/AC Chair car/ AC 3 Economy, Rs.120/- for Sleeper Class and Rs.60/- for Second Class. These charges are applicable per ticket per passenger and will be deducted before processing the refunds.
+    <br></h4>
+    <h4>Q) What do RAC, GNWL, PQWL, RLWL, and TQWL mean in railway reservation?<br>
+    A) RAC means Reservation against Cancellation. GNWL means General Waiting List, PQWL means Pooled Quota Waiting List, RLWL means Remote Location Waiting List, and TQWL means Tatkal Quota Waiting List. They are different waitlist statuses you might face after your train ticket booking (except RAC).
+    <br></h4>
+    <h4>Q) How many days in advance should I reserve a train ticket booking online?<br>
+    A) The advance reservation period for booking train tickets is 120 days (excluding the date of journey).
+    <br></h4>
+    <h4>Q) What documents do I need while booking train tickets online with RailYatri?<br>
+    A) Indian passengers are not required to input any ID details, but passengers of other nationalities need to input their valid ID number while booking train tickets online. During the journey, all passengers must carry at least one valid ID like Aadhar card, driving license, pan card, voter id card, etc.
+    <br></h4>
+    <h4>Q) Can I show the train ticket online on the device?<br>
+    A) Yes, you can show the train ticket on your mobile. RailYatri provides an M-ticket post-booking, which helps you save paper without having to take printouts.
+    <br></h4>
+    <h4>Q) Where can I get train ticket booking offers/discounts on RailYatri?<br>
+    A) You can find various offers and discounts on train ticket bookings on the RailYatri Offer Zone. Grab the best deals and enjoy the probability of winning from scratch cards.
+    <br></h4>
+    <h4>Q) Do I need to fill in my personal details repeatedly to receive services by RailYatri?<br>
+    A) No, you do not need to fill in your personal details repeatedly to receive services by RailYatri. We provide a personalised mobile app feature where the user needs to fill in a form only ONCE, enabling easier discovery of personal details at just one click.
+    <br></h4>
+    <h4>Q) How can I cancel my ticket?<br>
+    A) You can cancel your ticket (confirmed or waitlisted) with 3 easy steps. Go to "My Orders," select the train ticket you would like to cancel, and click on the "Cancel Order" button.
+    <br></h4>
+    <h4>Q) Will I get a refund on cancellation on online train booking?<br>
+    A) Yes, RailYatri provides an instant refund. The refund amount shall be automatically credited to the user's account used at the time of booking.</p>
+  </h4>    
+  </div>
+  </body>
+  </html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cab Booking</title>
+    <style>
+    .booking-container {
+        margin: 20px auto;
+        text-align: center;
+    }
+    
+    input[type="text"], input[type="datetime-local"] {
+        padding: 10px;
+        width: 300px;
+        margin-bottom: 10px;
+    }
+    
+    #bookButton {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+    
+    #bookingDetails {
+        margin-top: 20px;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color:gold;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #050505;
+      text-decoration: none;
+      padding: 10px;
+      margin: 0 10px;
+      border-radius: 5px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color:gold;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 5px;
+      text-align: left; /* Align dropdown items to the left */
+    }
+
+    .dropdown-content a {
+      color: #000000;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    button{
+        margin-left: 2%;
+ border-color: rgb(100, 100, 255);
+ color: #fff;
+ background-color: rgb(81, 81, 185);
+ border-radius: 20px;
+ font-size: 17px;
+ height: 40px;
+    }
+
+    header{
+       background-color: rgb(0, 111, 246);
+    }
+
+    footer {
+  background-color: rgb(245, 208, 2);
+  color: #fff;
+  padding: 20px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.footer-links li {
+  margin-right: 20px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.footer-contact p {
+  margin: 0;
+}
+  </style>
+</head>
+<body>
+    <header>
+        <img src="image/logo2.png" style="height: 100%; width: 100%;">
+      </header>
+    
+      <nav>
+        <div class="dropdown">
+          <a href="home.html">Home</a>
+        </div>
+        <div class="dropdown">
+          <a href="#">Search</a>
+          <div class="dropdown-content">
+            <a href="#">Available train</a>
+            <a href="e1.html">Search train</a>
+            <a href="popular.html">Popular destination</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Ticket</a>
+          <div class="dropdown-content">
+            <a href="cancel.html">Cancel Ticket</a>
+            <a href="book.html">Book Ticket</a>
+            <a href="ticket.html">Ticket details</a>
+          </div>
+          </div>
+          <div class="dropdown">
+            <a href="#">Service</a>
+            <div class="dropdown-content">
+              <a href="ecat.html">E-Catering</a>
+              <a href="hotel.html">Hotels</a>
+              <a href="cab.html">Cab</a>
+            </div>
+            </div>
+            <div class="dropdown">
+              <a href="#">Profile</a>
+              <div class="dropdown-content">
+                <a href="view.html">View</a>
+                <a href="update.html">Update</a>
+                <a href="profile.html">Profile Avatar</a>
+                <a href="change.html">Change Password</a>
+              </div>
+              </div>
+              <div class="dropdown">
+                <a href="#">Contact</a>
+                <div class="dropdown-content">
+                  <a href="about.html">About us</a>
+                  <a href="help.html">Help</a>
+                  <a href="faq.html">FAQs</a>
+                </div>
+                </div>
+            <a href="main.html">Logout</a>
+      </nav>
+
+    <div class="booking-container">
+        <h2>Book a Cab</h2>
+        <label for="from">From:</label>
+        <input type="text" id="from" placeholder="Enter pickup location...">
+        <label for="to">To:</label>
+        <input type="text" id="to" placeholder="Enter destination...">
+        <label for="datetime">Date & Time:</label>
+        <input type="datetime-local" id="datetime">
+        <button id="bookButton">Book Now</button>
+    </div>
+    <div id="bookingDetails"></div>
+
+    <script>
+        const bookingDetails = document.getElementById("bookingDetails");
+const bookButton = document.getElementById("bookButton");
+
+bookButton.addEventListener("click", function() {
+    const from = document.getElementById("from").value.trim();
+    const to = document.getElementById("to").value.trim();
+    const datetime = document.getElementById("datetime").value;
+
+    if (from === "" || to === "" || datetime === "") {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    const bookingInfo = document.createElement("div");
+    bookingInfo.innerHTML = `
+        <h3>Booking Details</h3>
+        <p><strong>From:</strong> ${from}</p>
+        <p><strong>To:</strong> ${to}</p>
+        <p><strong>Date & Time:</strong> ${new Date(datetime).toLocaleString()}</p>
+        <p><em>Your cab has been booked successfully!</em></p>
+    `;
+
+    bookingDetails.innerHTML = ""; // Clear previous booking details
+    bookingDetails.appendChild(bookingInfo);
+});
+
+    </script>
+</body>
+</html>

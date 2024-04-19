@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>railroute</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color:gold;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #050505;
+      text-decoration: none;
+      padding: 10px;
+      margin: 0 10px;
+      border-radius: 5px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color:gold;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 5px;
+      text-align: left; /* Align dropdown items to the left */
+    }
+
+    .dropdown-content a {
+      color: #000000;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+  
+
+    header{
+       background-color: rgb(0, 111, 246);
+    }
+
+    footer {
+  background-color: rgb(245, 208, 2);
+  color: #0040ff;
+  padding: 20px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.footer-links li {
+  margin-right: 20px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #024cd7;
+}
+
+.footer-contact p {
+  margin: 0;
+}
+  </style>
+</head>
+<body>
+
+    <header>
+        <img src="image/logo2.png" style="height: 100%; width: 100%;">
+      </header> 
+    
+      <nav>
+        <div class="dropdown">
+          <a href="home.html">Home</a>
+        </div>
+        <div class="dropdown">
+          <a href="#">Search</a>
+          <div class="dropdown-content">
+            <a href="available.html">Available train</a>
+            <a href="search.html">Search train</a>
+            <a href="popular.html">Popular destination</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Ticket</a>
+          <div class="dropdown-content">
+            <a href="search.html">Book Ticket</a>
+            <a href="cancel.html">Cancel Ticket</a>
+            <a href="ticket.html">Ticket details</a>
+          </div>
+          </div>
+          <div class="dropdown">
+            <a href="#">Service</a>
+            <div class="dropdown-content">
+              <a href="food.html">E-Catering</a>
+              <a href="about.html">About us</a>
+              <a href="help.html">Help</a>
+              <a href="faq.html">FAQs</a>
+            </div>
+            </div>
+            <div class="dropdown">
+              <a href="#">Profile</a>
+              <div class="dropdown-content">
+                <a href="view.html">View</a>
+                <a href="update.html">Update</a>
+                <a href="profile.html">Profile Avatar</a>
+                <a href="change.html">Change Password</a>
+              </div>
+              </div>
+            <a href="main.html">Logout</a>
+      </nav>
+
+<img src="image/header1.png" style="width: 100%;">
+
+  <script>
+    function showDetails(title, description, bookingInfo) {
+      document.getElementById('image-title').textContent = title;
+      document.getElementById('image-description').textContent = description;
+      document.getElementById('booking-info').textContent = bookingInfo;
+      document.getElementById('details-modal').style.display = 'flex';
+    }
+
+    function hideDetails() {
+      document.getElementById('details-modal').style.display = 'none';
+    }
+  </script>
+
+<footer>
+  <div class="footer-container">
+      <div class="footer-logo">
+          <h2>RailRoute</h2>
+      </div>
+      <div class="footer-links">
+          <ul>
+              <li><a href="home.html">Home</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact Us</a></li>
+          </ul>
+      </div>
+      <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p>123 Railway Street, RailCity</p>
+          <p>Email: info@railroute.com</p>
+          <p>Phone: 555-123-4567</p>
+      </div>
+  </div>
+  <div class="footer-bottom">
+      <p>&copy; 2024 RailRoute. All Rights Reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

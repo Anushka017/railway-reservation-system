@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Train Search</title>
+<style>
+  body {
+  font-family: Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#searchForm {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+}
+
+input[type="text"],
+input[type="date"],
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#results {
+  margin-top: 20px;
+  text-align: center;
+}
+
+table {
+  width: 90%;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  margin-left: 80px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color:gold;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #050505;
+      text-decoration: none;
+      padding: 10px;
+      margin: 0 10px;
+      border-radius: 5px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color:gold;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 5px;
+      text-align: left; /* Align dropdown items to the left */
+    }
+
+    .dropdown-content a {
+      color: #000000;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    header{
+       background-color: rgb(0, 111, 246);
+    }
+
+    footer {
+  background-color: rgb(245, 208, 2);
+  color: #fff;
+  padding: 20px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.footer-links li {
+  margin-right: 20px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.footer-contact p {
+  margin: 0;
+}
+</style>
+</head>
+<body>
+  <header>
+    <img src="image/logo2.png" style="height: 100%; width: 100%;">
+  </header> 
+
+  <nav>
+    <div class="dropdown">
+      <a href="home.html">Home</a>
+    </div>
+    <div class="dropdown">
+      <a href="#">Search</a>
+      <div class="dropdown-content">
+        <a href="#">Available train</a>
+        <a href="search.html">Search train</a>
+        <a href="popular.html">Popular destination</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Ticket</a>
+      <div class="dropdown-content">
+        <a href="cancel.html">Cancel Ticket</a>
+        <a href="book.html">Book Ticket</a>
+        <a href="ticket.html">Ticket details</a>
+      </div>
+      </div>
+      <div class="dropdown">
+        <a href="#">Service</a>
+        <div class="dropdown-content">
+          <a href="ecat.html">E-Catering</a>
+          <a href="hotel.html">Hotels</a>
+          <a href="cab.html">Cab</a>
+        </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Profile</a>
+          <div class="dropdown-content">
+            <a href="view.html">View</a>
+            <a href="update.html">Update</a>
+            <a href="profile.html">Profile Avatar</a>
+            <a href="change.html">Change Password</a>
+          </div>
+          </div>
+          <div class="dropdown">
+            <a href="#">Contact</a>
+            <div class="dropdown-content">
+              <a href="about.html">About us</a>
+              <a href="help.html">Help</a>
+              <a href="faq.html">FAQs</a>
+            </div>
+            </div>
+        <a href="main.html">Logout</a>
+  </nav>
+ 
+    <h1>Train Search</h1>
+    <form id="searchForm">
+      <label for="from">From:</label>
+      <input type="text" id="from" required>
+      <label for="to">To:</label>
+      <input type="text" id="to" required>
+      <label for="date">Date:</label>
+      <input type="date" id="date" min="" required>
+      <button type="submit">Search</button>
+    </form>
+    <div id="results"></div>
+  
+    <script>
+      document.getElementById('searchForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+          searchTrains();
+      });
+  
+      function searchTrains() {
+          var from = document.getElementById('from').value;
+          var to = document.getElementById('to').value;
+          var date = document.getElementById('date').value;
+  
+          // You can perform further validation or send this data to the server to fetch train information
+          // For demonstration, let's assume we have fetched train data in the below format
+          var trainData = [
+              { name: 'Train A', number: '12345', departure: '10:00 AM', arrival: '2:00 PM', fee: '$50' },
+              { name: 'Train B', number: '54321', departure: '3:00 PM', arrival: '7:00 PM', fee: '$60' },
+              { name: 'Train B', number: '54321', departure: '3:00 PM', arrival: '7:00 PM', fee: '$60' }
+          ];
+  
+          displayResults(trainData);
+      }
+  
+      function displayResults(data) {
+          var table = "<table border='1'><tr><th>Train Name</th><th>Train Number</th><th>Departure Time</th><th>Arrival Time</th><th>Fee</th><th>Book Ticket</th></tr>";
+          for (var i = 0; i < data.length; i++) {
+              table += "<tr><td>" + data[i].name + "</td><td>" + data[i].number + "</td><td>" + data[i].departure + "</td><td>" + data[i].arrival + "</td><td>" + data[i].fee + "</td><td><button onclick='bookTicket()'>Book</button></td></tr>";
+          }
+          table += "</table>";
+          document.getElementById('results').innerHTML = table;
+      }
+  
+      function bookTicket() {
+          // Implement booking functionality here
+          alert("Ticket booked successfully!");
+      }
+  
+      // To disable past dates in the date picker
+      var today = new Date().toISOString().split('T')[0];
+      document.getElementById("date").setAttribute('min', today);
+  </script>
+  </body>
+  </html>
+  

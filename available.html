@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train Timetable</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .search-container {
+      margin-bottom: 20px;
+    }
+
+    .search-container input[type=text] {
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 17px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .search-container input[type=text]::placeholder {
+      font-style: italic;
+    }
+
+    .buy-button {
+      padding: 6px 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .buy-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Train Timetable</h1>
+  <div class="search-container">
+    <input type="text" id="trainSearchInput" placeholder="Search for train name...">
+  </div>
+  <table id="trainTable">
+    <thead>
+      <tr>
+        <th>Train Number</th>
+        <th>Train Name</th>
+        <th>Route</th>
+        <th>Departure Time</th>
+        <th>Arrival Time</th>
+        <th>Total Seats</th>
+        <th>Fare</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Dummy data for demonstration -->
+      <tr>
+        <td>123</td>
+        <td>Express Train</td>
+        <td>City A to City B</td>
+        <td>09:00 AM</td>
+        <td>12:00 PM</td>
+        <td>100</td>
+        <td>$50</td>
+        <td><button class="buy-button">Buy</button></td>
+      </tr>
+      <tr>
+        <td>456</td>
+        <td>Local Train</td>
+        <td>City B to City C</td>
+        <td>11:00 AM</td>
+        <td>02:00 PM</td>
+        <td>150</td>
+        <td>$30</td>
+        <td><button class="buy-button">Buy</button></td>
+      </tr>
+      <tr>
+        <td>789</td>
+        <td>Superfast Train</td>
+        <td>City C to City D</td>
+        <td>02:00 PM</td>
+        <td>05:00 PM</td>
+        <td>200</td>
+        <td>$70</td>
+        <td><button class="buy-button">Buy</button></td>
+      </tr>
+      <!-- End of dummy data -->
+    </tbody>
+  </table>
+
+  <script>
+    // Function to handle train search
+    function searchTrain() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("trainSearchInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("trainTable");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those that don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1]; // Index 1 for Train Name column
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+    // Add event listener for train search input
+    document.getElementById("trainSearchInput").addEventListener("keyup", searchTrain);
+  </script>
+</body>
+</html>

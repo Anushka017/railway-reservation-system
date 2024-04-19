@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title> Registration Form</title>
+        <link rel="stylesheet"  href="style2.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="card">
+                <div class="inner-box" id="card">
+                    <div class="card-front">
+                    <h2>LOG IN</h2>
+                    <form>
+                        <input type="email" class="input-box" placeholder="Your Email Id" required>
+                        <input type="password" class="input-box" placeholder="Password" required>
+                        <button typ="submit" class="submit-btn"><a href="main.html">Submit</a></button>
+                        <button ><a href="main.html">Back To Home</a></button>
+                        <input type="checkbox"><span>Remember Me</span>
+                    </form>
+                    <button type="button" class="btn" onclick="openLogin()">I'm New Here</button>
+                    </div>
+                <div class="card-back">
+                    <h2>SIGN IN</h2>
+                    <form>
+                        <input type="text" class="input-box" placeholder="Your Name" required>
+                        <input type="email" class="input-box" placeholder="Your Email Id" required>
+                        <input type="password" class="input-box" placeholder="Password" required>
+                        <input type="confirm password" class="input-box" placeholder="Confirm Password" required>
+                        <input type="phone" class="input-box" placeholder="Enter Phone number" maxlength="10" pattern="[0-9]{10}" required>
+                        <button typ="submit" class="submit-btn"><a href="main.html">Submit</a></button>
+                        <button ><a href="main.html">Back To Home</a></button>
+                        <input type="checkbox"><span>Remember Me</span>
+                    </form>
+                    <button type="button" class="btn" onclick="openSignin()">I've an account</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <script>
+            var card=document.getElementById("card");
+            function openLogin(){
+                card.style.transform="rotateY(-180deg)";
+            }
+            function openSign(){
+                card.style.transform="rotateY(0deg)";
+            }
+        </script>
+        
+    </body>
+</html>

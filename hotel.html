@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Search</title>
+    <style>
+        .search-container {
+    margin: 20px;
+    text-align: center;
+}
+
+#hotel-results {
+    margin: 20px;
+}
+
+.hotel {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.no-results {
+    margin: 20px;
+    color: red;
+}
+
+#search-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#search-input {
+    padding: 10px;
+    width: 300px;
+    margin-right: 10px;
+}
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search for destination...">
+        <button id="search-button">Search</button>
+    </div>
+    <div id="hotel-results"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
+    const hotelResults = document.getElementById('hotel-results');
+
+    const hotels = [
+        { name: "Hotel A",  photo: "hotel1.jpg",destination: "mumbai", review: "4.5", price: "$100" },
+        { name: "Hotel B",photo: "hotel2.jpg", destination: "mumbai", review: "4.0", price: "$120" },
+        { name: "Hotel C",  photo: "hotel3.jpg",destination: "mangalore", review: "4.2", price: "$90" },
+        // Add more hotels as needed
+    ];
+
+    searchButton.addEventListener('click', function() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredHotels = hotels.filter(hotel => hotel.destination.toLowerCase().includes(searchTerm));
+
+        displayResults(filteredHotels);
+    });
+
+    function displayResults(results) {
+        hotelResults.innerHTML = '';
+
+        if (results.length === 0) {
+            hotelResults.innerHTML = '<p class="no-results">No results found</p>';
+        } else {
+            results.forEach(hotel => {
+                const hotelElement = document.createElement('div');
+                hotelElement.classList.add('hotel');
+                hotelElement.innerHTML = `
+                    <h3>${hotel.name}</h3>
+                    <img src="${hotel.photo}" alt="${hotel.name}">
+                    <p><strong>Destination:</strong> ${hotel.destination}</p>
+                    <p><strong>Review:</strong> ${hotel.review}</p>
+                    <p><strong>Price:</strong> ${hotel.price}</p>
+                    <button>Book Ticket</button>
+                `;
+                hotelResults.appendChild(hotelElement);
+            });
+        }
+    }
+});
+
+    </script>
+</body>
+</html>

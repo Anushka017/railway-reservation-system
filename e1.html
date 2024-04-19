@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train Search</title>
+  <style>
+    /* CSS styles */
+    input[type="date"] {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Train Search</h1>
+  <form id="searchForm">
+    <label for="from">From:</label>
+    <input type="text" id="from" name="from" required><br><br>
+    
+    <label for="to">To:</label>
+    <input type="text" id="to" name="to" required><br><br>
+    
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" min="" required><br><br>
+    
+    <button type="submit">Search</button>
+  </form>
+  
+  <div id="results">
+    <!-- Results will be displayed here -->
+  </div>
+
+  <script>
+    // JavaScript code
+    const searchForm = document.getElementById('searchForm');
+    const resultsContainer = document.getElementById('results');
+
+    searchForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const from = document.getElementById('from').value;
+      const to = document.getElementById('to').value;
+      const date = document.getElementById('date').value;
+
+      // Check if the date is not past or present
+      const currentDate = new Date();
+      const selectedDate = new Date(date);
+      if (selectedDate < currentDate) {
+        alert('Please select a future date.');
+        return;
+      }
+
+      // You can perform further processing here, like making an API call to fetch train data
+      // For demonstration purposes, let's assume we have some hardcoded train data
+      const trainData = [
+        { name: 'Train 1', number: '12345', route: 'Route 1', departureTime: '08:00 AM', arrivalTime: '12:00 PM', fee: '$50', destination: 'Destination A' },
+        { name: 'Train 2', number: '67890', route: 'Route 2', departureTime: '09:00 AM', arrivalTime: '01:00 PM', fee: '$60', destination: 'Destination B' },
+        { name: 'Train 3', number: '54321', route: 'Route 1', departureTime: '10:00 AM', arrivalTime: '02:00 PM', fee: '$55', destination: 'Destination A' },
+        { name: 'Train 4', number: '09876', route: 'Route 2', departureTime: '11:00 AM', arrivalTime: '03:00 PM', fee: '$65', destination: 'Destination B' },
+      ];
+
+      // Filter trains based on 'from' and 'to' stations
+      const filteredTrains = trainData.filter(train => train.route.includes(from) && train.destination === to);
+
+      // Display results in table format
+      let tableHTML = '<table border="1"><tr><th>Train Name</th><th>Train Number</th><th>Route</th><th>Station</th><th>Departure Time</th><th>Arrival Time</th><th>Fee</th><th>Book Ticket</th></tr>';
+      filteredTrains.forEach(train => {
+        tableHTML += `<tr><td>${train.name}</td><td>${train.number}</td><td>${train.route}</td><td>${train.destination}</td><td>${train.departureTime}</td><td>${train.arrivalTime}</td><td>${train.fee}</td><td><button onclick="bookTicket('${train.name}')">Book</button></td></tr>`;
+      });
+      tableHTML += '</table>';
+      resultsContainer.innerHTML = tableHTML;
+    });
+
+    function bookTicket(trainName) {
+      alert(`Ticket booked for ${trainName}`);
+      // Additional functionality for booking ticket can be added here
+    }
+  </script>
+</body>
+</html>

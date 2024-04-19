@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Boxes</title>
+  <style>
+    .image-box-container {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .image-box:hover {
+    transform: scale(1.2);
+    }
+
+    .image-box {
+      width: 300px;
+      height: 350px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 20px;
+      cursor: pointer;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 40%;
+      object-fit: cover;
+    }
+
+    #details-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 50;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      height: 400px;
+      width: 500px;
+    }
+
+    .close-btn {
+      cursor: pointer;
+      color: #333;
+      font-size: 20px;
+      float: right;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color:gold;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #050505;
+      text-decoration: none;
+      padding: 10px;
+      margin: 0 10px;
+      border-radius: 5px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color:gold;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 5px;
+      text-align: left; /* Align dropdown items to the left */
+    }
+
+    .dropdown-content a {
+      color: #000000;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    button{
+ margin-left: 30%;
+ border-color: rgb(100, 100, 255);
+ color: #fff;
+ background-color: rgb(81, 81, 185);
+ border-radius: 20px;
+ font-size: 17px;
+ height: 40px;
+    }
+
+    header{
+       background-color: rgb(0, 111, 246);
+    }
+
+    footer {
+  background-color: rgb(245, 208, 2);
+  color: #fff;
+  padding: 20px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.footer-links li {
+  margin-right: 20px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.footer-contact p {
+  margin: 0;
+}
+  </style>
+</head>
+<body>
+
+    <header>
+        <img src="image/logo2.png" style="height: 100%; width: 100%;">
+      </header>
+    
+      <nav>
+        <div class="dropdown">
+          <a href="home.html">Home</a>
+        </div>
+        <div class="dropdown">
+          <a href="#">Search</a>
+          <div class="dropdown-content">
+            <a href="#">Available train</a>
+            <a href="e1.html">Search train</a>
+            <a href="popular.html">Popular destination</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Ticket</a>
+          <div class="dropdown-content">
+            <a href="cancel.html">Cancel Ticket</a>
+            <a href="book.html">Book Ticket</a>
+            <a href="ticket.html">Ticket details</a>
+          </div>
+          </div>
+          <div class="dropdown">
+            <a href="#">Service</a>
+            <div class="dropdown-content">
+              <a href="ecat.html">E-Catering</a>
+              <a href="hotel.html">Hotels</a>
+              <a href="cab.html">Cab</a>
+            </div>
+            </div>
+            <div class="dropdown">
+              <a href="#">Profile</a>
+              <div class="dropdown-content">
+                <a href="view.html">View</a>
+                <a href="update.html">Update</a>
+                <a href="profile.html">Profile Avatar</a>
+                <a href="change.html">Change Password</a>
+              </div>
+              </div>
+              <div class="dropdown">
+                <a href="#">Contact</a>
+                <div class="dropdown-content">
+                  <a href="about.html">About us</a>
+                  <a href="help.html">Help</a>
+                  <a href="faq.html">FAQs</a>
+                </div>
+                </div>
+            <a href="main.html">Logout</a>
+      </nav>
+
+<img src="image/header1.png" style="width: 100%;">
+
+<div class="animated-image-container">
+  <video class="animated-image"  style="width: 100%; height: 100%; "autoplay loop muted>
+      <source src="image/headervid.mp4" type="video/mp4">
+  </video>
+  </div>
+
+  <script>
+    function showDetails(title, description, bookingInfo) {
+      document.getElementById('image-title').textContent = title;
+      document.getElementById('image-description').textContent = description;
+      document.getElementById('booking-info').textContent = bookingInfo;
+      document.getElementById('details-modal').style.display = 'flex';
+    }
+
+    function hideDetails() {
+      document.getElementById('details-modal').style.display = 'none';
+    }
+  </script>
+
+<footer>
+  <div class="footer-container">
+      <div class="footer-logo">
+          <h2>RailRoute</h2>
+      </div>
+      <div class="footer-links">
+          <ul>
+              <li><a href="home.html">Home</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact Us</a></li>
+          </ul>
+      </div>
+      <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p>123 Railway Street, RailCity</p>
+          <p>Email: info@railroute.com</p>
+          <p>Phone: 555-123-4567</p>
+      </div>
+  </div>
+  <div class="footer-bottom">
+      <p>&copy; 2024 RailRoute. All Rights Reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

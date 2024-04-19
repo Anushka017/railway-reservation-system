@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RailRoute - Your Companion!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .text {
+            width: 45%;
+            text-align: left;
+        }
+
+        img {
+            max-width: 100%;
+            width: 850px; 
+            height: 750px; 
+            float: right; 
+            padding-right: 5px;
+        }
+        .t1{
+            color: rgb(63, 1, 107);
+            font-size: 80px; 
+            font-family: Arial rgb(63, 1, 107); 
+            float: left; 
+            margin-left: 10%; 
+            margin-top: 5px;
+        }
+        .t2{
+            color: blueviolet;
+            font-size: 70px;
+            font-family: Arial rgb(113, 35, 168); 
+            float: left;
+            margin-left: 10%;
+        }
+        p + p {
+        margin-top: -60px; /* Adjust this value as needed */
+        }
+        #admin{
+            background-color: rgb(62, 0, 120);
+            margin-left: 40%;
+            color: floralwhite;
+            height:60px;
+            width: 250px;
+            font-size: 30px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 50px;
+        }
+        #employee{
+            background-color: rgb(62, 0, 120);
+            margin-left: 40%;
+            margin-top: 3%;
+            color: floralwhite;
+            height:60px;
+            width: 250px;
+            font-size: 30px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="text">
+        <p class="t1">Connect You to Your Destination</p>
+        <p class="t2">RailRoute - Your Companion!</p>
+        <a href="signin.html"><button id="admin">Admin login</button></a>
+        <a href="signin.html"><button id="employee">User login</button></a>
+    </div>
+    <div class="image">
+        <img src="image/header3.png" alt="Train Image">
+    </div>
+
+</div>
+
+</body>
+</html>

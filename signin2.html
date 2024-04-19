@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <p id="error-message" class="error"></p>
+  </div>
+  <script>
+  // JavaScript code
+document.addEventListener("DOMContentLoaded", function() {
+  const loginForm = document.getElementById("login-form");
+
+  loginForm.addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    // Simulate successful login (you would replace this with your actual login logic)
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    if (username === "example" && password === "password") {
+      createProfile(username); // Create profile if login is successful
+    } else {
+      alert("Invalid username or password. Please try again.");
+    }
+  });
+
+  function createProfile(username) {
+    // Redirect to view.html
+    window.location.href = `view.html?username=${username}`;
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const changePasswordForm = document.getElementById("change-password-form");
+
+  changePasswordForm.addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    // Retrieve new password values
+    const newPassword = document.getElementById("new-password").value;
+    const confirmPassword = document.getElementById("confirm-password").value;
+
+    // Perform validation
+    if (newPassword !== confirmPassword) {
+      alert("Passwords do not match. Please try again.");
+      return;
+    }
+
+    // Implement logic to change password (replace with your actual code)
+    // Here you would typically make a request to your backend to update the password
+    alert("Password changed successfully.");
+    // Optionally, redirect the user to another page after changing password
+    window.location.href = "view.html";
+  });
+});
+
+// JavaScript code for logout
+document.addEventListener("DOMContentLoaded", function() {
+  const logoutBtn = document.getElementById("logout");
+
+  logoutBtn.addEventListener("click", function() {
+    // Clear user session or authentication information
+    // For demonstration purposes, we'll just clear the username stored in localStorage
+    localStorage.removeItem("username");
+
+    // Redirect user to login page
+    window.location.href = "main.html";
+  });
+});
+
+  </script>
+</body>
+</html>

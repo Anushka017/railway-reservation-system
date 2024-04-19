@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile View</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="profile-container">
+    <h2>Welcome, <span id="username-display"></span>!</h2>
+    <button id="change-profile-image">Change Profile Image</button>
+    <button id="update-profile">Update Profile</button>
+    <button id="change-password">Change Password</button>
+    <button id="logout">Logout</button>
+    <p id="logout-message" class="success"></p>
+  </div>
+  <script>
+    // Fake login credentials for demonstration
+const fakeCredentials = {
+  username: "user123",
+  password: "password123"
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+  const loginForm = document.getElementById("login-form");
+  const errorMessage = document.getElementById("error-message");
+  
+  loginForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    
+    // Check if username and password match the fake credentials
+    if (username === fakeCredentials.username && password === fakeCredentials.password) {
+      // Redirect to profile view page
+      window.location.href = "view.html";
+    } else {
+      errorMessage.textContent = "Invalid username or password";
+    }
+  });
+  
+  // Logout functionality
+  const logoutButton = document.getElementById("logout");
+  const logoutMessage = document.getElementById("logout-message");
+  
+  logoutButton.addEventListener("click", function() {
+    // Perform logout operation (e.g., call backend logout endpoint)
+    // Upon successful logout, redirect to login page
+    // For demonstration purposes, simply redirect to login page
+    window.location.href = "view.html";
+  });
+});
+
+  </script>
+</body>
+</html>

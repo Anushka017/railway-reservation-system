@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Railway E-Catering</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#menu {
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.food-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.food-item img {
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+}
+
+#cart {
+  width: 30%;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#total {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.food-item:hover {
+    transform: scale(1.2);
+    }
+
+.pnr{
+  background-color: rgb(255, 225, 0);
+  width: 100%;
+  text-align: center;
+}    
+  </style>
+</head>
+<body>
+  
+<div class="pnr">
+  <h1>order delicious food on railroute</h1>
+</div>
+
+  <h1 style="margin-left: 18px; background-color: green; width: 100%;">Vegetarian</h1>
+    <div id="menu">
+    <div class="food-item" onclick="addToCart('Sandwich', 50)">
+      <img src="image/goa.jpeg" alt="Sandwich">
+      <p class="food-name">Sandwich</p>
+      <p class="food-price">$50</p>
+    </div>
+    <div class="food-item" onclick="addToCart('Burger', 60)">
+      <img src="burger.jpg" alt="Burger">
+      <p class="food-name">Burger</p>
+      <p class="food-price">$60</p>
+    </div>
+    <div class="food-item" onclick="addToCart('Pizza', 80)">
+      <img src="pizza.jpg" alt="Pizza">
+      <p class="food-name">Pizza</p>
+      <p class="food-price">$80</p>
+    </div>
+  </div>
+
+  <h1 style="margin-left: 18px; background-color: rgb(255, 21, 9); width: 100%;">Non-Vegetarian</h1>
+  <div id="menu">
+  <div class="food-item" onclick="addToCart('Kabaab', 20)">
+    <img src="image/goa.jpeg" alt="Sandwich">
+    <p class="food-name">Kabaab</p>
+    <p class="food-price">$20</p>
+  </div>
+  <div class="food-item" onclick="addToCart('Burger', 60)">
+    <img src="burger.jpg" alt="Burger">
+    <p class="food-name">Burger</p>
+    <p class="food-price">$60</p>
+  </div>
+  <div class="food-item" onclick="addToCart('Pizza', 80)">
+    <img src="pizza.jpg" alt="Pizza">
+    <p class="food-name">Pizza</p>
+    <p class="food-price">$80</p>
+  </div>
+</div>
+
+  <div id="cart">
+    <h2>Cart</h2>
+    <table id="cartTable">
+      <tr>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </table>
+    <div id="total">Total: $<span id="totalAmount">0</span></div>
+    <button onclick="buy()">Buy</button>
+  </div>
+
+  <script>
+    let cart = [];
+
+function addToCart(itemName, price) {
+  let found = false;
+  cart.forEach(item => {
+    if (item.name === itemName) {
+      item.quantity++;
+      found = true;
+    }
+  });
+  if (!found) {
+    cart.push({ name: itemName, price: price, quantity: 1 });
+  }
+  displayCart();
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  displayCart();
+}
+
+function displayCart() {
+  let cartTable = document.getElementById("cartTable");
+  cartTable.innerHTML = "<tr><th>Item Name</th><th>Quantity</th><th>Price</th><th>Action</th></tr>";
+  let totalAmount = 0;
+  cart.forEach((item, index) => {
+    let row = cartTable.insertRow(-1);
+    let nameCell = row.insertCell(0);
+    let quantityCell = row.insertCell(1);
+    let priceCell = row.insertCell(2);
+    let actionCell = row.insertCell(3);
+    nameCell.innerHTML = item.name;
+    quantityCell.innerHTML = item.quantity;
+    priceCell.innerHTML = "$" + item.price * item.quantity;
+    totalAmount += item.price * item.quantity;
+    actionCell.innerHTML = `<button onclick="removeFromCart(${index})">Remove</button>`;
+  });
+  document.getElementById("totalAmount").textContent = totalAmount;
+}
+
+function buy() {
+  // Code for finalizing purchase
+  alert("Purchase complete!");
+  cart = [];
+  displayCart();
+}
+  </script>
+</body>
+</html>
